@@ -1,0 +1,569 @@
+{
+	"info": {
+		"_postman_id": "f04de666-b1a7-4ee1-8641-efea3c6487f1",
+		"name": "Collection Users",
+		"description": "Коллекция запросов сервиса «Пользователи», который предоставляет информацию обо всех авторизованных пользователях приложения",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3630344"
+	},
+	"item": [
+		{
+			"name": "Авторизация",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-length": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"user\",\n    \"password\": \"pass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{UserService}}/user/auth",
+					"host": [
+						"{{UserService}}"
+					],
+					"path": [
+						"user",
+						"auth"
+					]
+				},
+				"description": "Простая авторизация: ввод логина и пароля."
+			},
+			"response": [
+				{
+					"name": "Авторизация",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\": \"user\",\n    \"password\": \"pass\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{UserService}}/user/auth",
+							"host": [
+								"{{UserService}}"
+							],
+							"path": [
+								"user",
+								"auth"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{}"
+				},
+				{
+					"name": "Авторизация (ошибка)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{UserService}}/user/auth",
+							"host": [
+								"{{UserService}}"
+							],
+							"path": [
+								"user",
+								"auth"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 02 Feb 2023 21:56:25 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "164"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=c6f070b1f71231da"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=723711bb9fe262b6"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "120"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "119"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1675375045"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Список избранного",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{UserService}}/user/favorites/list",
+					"host": [
+						"{{UserService}}"
+					],
+					"path": [
+						"user",
+						"favorites",
+						"list"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": null,
+							"description": "Опциональный параметр\n(string) Тип объекта\nВарианты значений: film",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Возвращает список объектов всех типов, которые пользователь добавил в избранное: фильмы и сериалы."
+			},
+			"response": [
+				{
+					"name": "Список избранного",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{UserService}}/user/favorites/list",
+							"host": [
+								"{{UserService}}"
+							],
+							"path": [
+								"user",
+								"favorites",
+								"list"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "film",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 02 Feb 2023 22:15:26 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "150"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=522c787e517fcf72"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=9e6a10db54854b0a"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "120"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "119"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1675376185"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"favorites\": [\n        {\n            \"type\": \"film\",\n            \"id\": \"101\"\n        },\n        {\n            \"type\": \"film\",\n            \"id\": \"102\"\n        },\n        {\n            \"type\": \"serie\",\n            \"id\": \"201\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Список избранных фильмов",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{UserService}}/user/favorites/list?type=\"film\"",
+							"host": [
+								"{{UserService}}"
+							],
+							"path": [
+								"user",
+								"favorites",
+								"list"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "\"film\""
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"favorites\": [\n        {\n            \"type\": \"film\",\n            \"id\": \"101\"\n        },\n        {\n            \"type\": \"film\",\n            \"id\": \"102\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Добавить объект в избранное",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"film\",\n    \"id\": \"103\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{UserService}}/user/favorites/add",
+					"host": [
+						"{{UserService}}"
+					],
+					"path": [
+						"user",
+						"favorites",
+						"add"
+					]
+				},
+				"description": "Добавляет в избранное любой объект.\n\nВ теле запроса указывается тип объекта и его уникальный идентификатор."
+			},
+			"response": [
+				{
+					"name": "Добавить фильм в избранное",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"film\",\n    \"id\": \"103\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{UserService}}/user/favorites/add",
+							"host": [
+								"{{UserService}}"
+							],
+							"path": [
+								"user",
+								"favorites",
+								"add"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 02 Feb 2023 22:25:12 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "150"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=dd6828d0321b1ef7"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=ca45838100329738"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "120"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "119"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1675376772"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Удалить объект из избранного",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"film\",\n    \"id\": \"103\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{UserService}}/user/favorites/delete",
+					"host": [
+						"{{UserService}}"
+					],
+					"path": [
+						"user",
+						"favorites",
+						"delete"
+					]
+				},
+				"description": "Удаляет из избранного любой объект.\n\nВ теле запроса указывается тип объекта и его уникальный идентификатор."
+			},
+			"response": [
+				{
+					"name": "Удалить фильм из избранного",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"film\",\n    \"id\": \"103\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{UserService}}/user/favorites/delete",
+							"host": [
+								"{{UserService}}"
+							],
+							"path": [
+								"user",
+								"favorites",
+								"delete"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 02 Feb 2023 22:25:12 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "150"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=dd6828d0321b1ef7"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=ca45838100329738"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "120"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "119"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1675376772"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\"\n}"
+				}
+			]
+		}
+	]
+}

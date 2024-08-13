@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "05944e9e-6345-4cb4-b30f-716500b3eceb",
+		"name": "Part 4 Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3630344"
+	},
+	"item": [],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"pm.test(\"response must be valid and have a body\", function () {",
+					"     pm.response.to.be.ok;",
+					"     pm.response.to.be.withBody;",
+					"     pm.response.to.be.json;",
+					"});",
+					"",
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "metricsServer",
+			"value": "https://737d1334-2cd4-4565-9d83-4c6959bf9c81.mock.pstmn.io"
+		},
+		{
+			"key": "channelId",
+			"value": "14100"
+		}
+	]
+}
