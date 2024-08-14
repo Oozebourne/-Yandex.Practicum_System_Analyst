@@ -1,0 +1,1148 @@
+{
+	"info": {
+		"_postman_id": "9d7687f8-69da-4a6a-b779-0c83e2141c6f",
+		"name": "Part 4 Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31089656"
+	},
+	"item": [
+		{
+			"name": "Динамика количества пользователей за указанный период*",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test for monthly mode only\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"monthly\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{metricsServer}}/channel/{{channelId}}/stats/viewers?dateFrom={{dateFrom}}&dateTo={{dateTo}}&mode=monthly",
+					"host": [
+						"{{metricsServer}}"
+					],
+					"path": [
+						"channel",
+						"{{channelId}}",
+						"stats",
+						"viewers"
+					],
+					"query": [
+						{
+							"key": "dateFrom",
+							"value": "{{dateFrom}}",
+							"description": "Обязательный параметр\nДата начала периода (string)"
+						},
+						{
+							"key": "dateTo",
+							"value": "{{dateTo}}",
+							"description": "Обязательный параметр\nДата окончания периода (string)"
+						},
+						{
+							"key": "mode",
+							"value": "monthly",
+							"description": "Опциональный параметр\nрежим вывода данных (string)\nВарианты значений: \n- hourly -- по часам, \n- daily -- по дням, \n- weekly -- по неделям,\n- monthly -- по месяцам"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Кол-во пользователей за период (по часам)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/viewers?dateFrom={{dateHourFrom}}&dateTo={{dateHourTo}}&mode=hourly",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"viewers"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateHourFrom}}"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateHourTo}}"
+								},
+								{
+									"key": "mode",
+									"value": "hourly"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"dateFrom\": \"{{dateHourFrom}}\",\n  \"dateTo\": \"{{dateHourTo}}\",\n  \"channelId\": {{channelId}},\n  \"channelTitle\": \"Пейзаж ТВ\",\n  \"viewsDetails\": {\n    \"mode\": \"hourly\",\n    \"details\": [\n      {\n        \"period\": {\n          \"dateFrom\": \"{{dateHourFrom}}\",\n          \"dateTo\": \"2023-02-16T23:59:59\",\n          \"dateTitle\": \"Четверг\",\n          \"details\": [\n            {\n              \"dateHourFrom\": \"{{dateHourFrom}}\",\n              \"dateHourTo\": \"2023-02-16T10:59:59\",\n              \"userCount\": {\n                \"value\": 2,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T11:00:00\",\n              \"dateHourTo\": \"2023-02-16T11:59:59\",\n              \"userCount\": {\n                \"value\": 4,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T12:00:00\",\n              \"dateHourTo\": \"2023-02-16T12:59:59\",\n              \"userCount\": {\n                \"value\": 7,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T13:00:00\",\n              \"dateHourTo\": \"2023-01-16T13:59:59\",\n              \"userCount\": {\n                \"value\": 1,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T14:00:00\",\n              \"dateHourTo\": \"2023-01-16T14:59:59\",\n              \"userCount\": {\n                \"value\": 2,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T15:00:00\",\n              \"dateHourTo\": \"2023-01-16T15:59:59\",\n              \"userCount\": {\n                \"value\": 2,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T16:00:00\",\n              \"dateHourTo\": \"2023-01-16T16:59:59\",\n              \"userCount\": {\n                \"value\": 5,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T17:00:00\",\n              \"dateHourTo\": \"2023-01-16T17:59:59\",\n              \"userCount\": {\n                \"value\": 7,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T18:00:00\",\n              \"dateHourTo\": \"2023-01-16T18:59:59\",\n              \"userCount\": {\n                \"value\": 19,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T19:00:00\",\n              \"dateHourTo\": \"2023-01-16T19:59:59\",\n              \"userCount\": {\n                \"value\": 34,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T20:00:00\",\n              \"dateHourTo\": \"2023-01-16T20:59:59\",\n              \"userCount\": {\n                \"value\": 48,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T21:00:00\",\n              \"dateHourTo\": \"2023-01-16T21:59:59\",\n              \"userCount\": {\n                \"value\": 22,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T22:00:00\",\n              \"dateHourTo\": \"2023-01-16T22:59:59\",\n              \"userCount\": {\n                \"value\": 14,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-16T223:00:00\",\n              \"dateHourTo\": \"2023-01-16T23:59:59\",\n              \"userCount\": {\n                \"value\": 0,\n                \"unit\": \"шт.\"\n              }\n            }\n          ]\n        }\n      },\n      {\n        \"period\": {\n          \"dateFrom\": \"2023-02-17T00:00:00\",\n          \"dateTo\": \"{{dateHourTo}}\",\n          \"dateTitle\": \"Пятница\",\n          \"details\": [\n            {\n              \"dateHourFrom\": \"2023-02-17T00:00:00\",\n              \"dateHourTo\": \"2023-02-17T00:59:59\",\n              \"userCount\": {\n                \"value\": 0,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-17T01:00:00\",\n              \"dateHourTo\": \"2023-02-17T01:59:59\",\n              \"userCount\": {\n                \"value\": 1,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-17T02:00:00\",\n              \"dateHourTo\": \"2023-02-17T02:59:59\",\n              \"userCount\": {\n                \"value\": 2,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-17T03:00:00\",\n              \"dateHourTo\": \"2023-01-17T03:59:59\",\n              \"userCount\": {\n                \"value\": 1,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-17T04:00:00\",\n              \"dateHourTo\": \"2023-01-17T04:59:59\",\n              \"userCount\": {\n                \"value\": 3,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-17T05:00:00\",\n              \"dateHourTo\": \"2023-01-17T05:59:59\",\n              \"userCount\": {\n                \"value\": 1,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-17T06:00:00\",\n              \"dateHourTo\": \"2023-01-17T06:59:59\",\n              \"userCount\": {\n                \"value\": 0,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-17T07:00:00\",\n              \"dateHourTo\": \"2023-01-17T07:59:59\",\n              \"userCount\": {\n                \"value\": 3,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-17T08:00:00\",\n              \"dateHourTo\": \"2023-01-17T08:59:59\",\n              \"userCount\": {\n                \"value\": 4,\n                \"unit\": \"шт.\"\n              }\n            },\n            {\n              \"dateHourFrom\": \"2023-02-17T09:00:00\",\n              \"dateHourTo\": \"{{dateHoutTo}}\",\n              \"userCount\": {\n                \"value\": 3,\n                \"unit\": \"шт.\"\n              }\n            }\n          ]\n        }\n      }\n    ],\n    \"userCount\": {\n      \"value\": 185,\n      \"unit\": \"шт.\"\n    }\n  }\n}"
+				},
+				{
+					"name": "Кол-во пользователей за период (по дням)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/viewers?dateFrom={{dateFrom}}&dateTo={{dateTo}}&mode=daily",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"viewers"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}"
+								},
+								{
+									"key": "mode",
+									"value": "daily"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n\t\"dateFrom\": \"{{dateFrom}}\",\n\t\"dateTo\": \"{{dateTo}}\",\n    \"channelId\":{{channelId}},\n    \"channelTitle\":\"Пейзаж ТВ\",\n\t\"viewsDetails\": {\n\t\t\"mode\": \"daily\",\n\t\t\"details\": [{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"{{dateFrom}}\",\n\t\t\t\t\t\"dateTo\": \"2023-01-20T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 98,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-01-21T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-01-21T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 100,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-01-22T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-01-22T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 102,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t}, {\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-01-23T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-01-23T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 104,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t}, {\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-01-24T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-01-24T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 106,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t}, {\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-01-25T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-01-25T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 108,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t}, {\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-01-26T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-01-26T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 110,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t}, {\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-01-27T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-01-27T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 113,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t}, {\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-01-28T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-01-28T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 115,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t}, {\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-01-29T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-01-29T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 117,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t}, {\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-01-30T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-01-30T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 119,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t}, {\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-01-31T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-01-31T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 122,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-01-31T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-01-31T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 122,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-01T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-01T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 124,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-02T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-02T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 127,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-03T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-03T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 129,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-04T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-04T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 132,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-05T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-05T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 135,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-06T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-06T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 137,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-07T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-07T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 140,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-08T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-08T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 143,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-09T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-09T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 146,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-10T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-10T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 149,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-11T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-11T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 152,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-12T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-12T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 155,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-13T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-13T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 158,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-14T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-14T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 161,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-15T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-15T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 164,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-16T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-16T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 167,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-17T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-17T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 171,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-18T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-18T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 174,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-19T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"2023-02-19T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 178,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-20T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"{{dateTo}}\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 181,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t}\n\t\t]\n\t}\n}"
+				},
+				{
+					"name": "Кол-во пользователей за период (по месяцам)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/viewers?dateFrom={{dateFrom}}&dateTo={{dateTo}}&mode=monthly",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"viewers"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}"
+								},
+								{
+									"key": "mode",
+									"value": "monthly"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n\t\"dateFrom\": \"{{dateFrom}}\",\n\t\"dateTo\": \"{{dateTo}}\",\n    \"channelId\":{{channelId}},\n    \"channelTitle\":\"Пейзаж ТВ\",\n\t\"viewsDetails\": {\n\t\t\"mode\": \"monthly\",\n\t\t\"details\": [{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"{{dateFrom}}\",\n\t\t\t\t\t\"dateTo\": \"2023-01-31T23:59:59\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 1314,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"period\": {\n\t\t\t\t\t\"dateFrom\": \"2023-02-01T00:00:00\",\n\t\t\t\t\t\"dateTo\": \"{{dateTo}}\"\n\t\t\t\t},\n\t\t\t\t\"userCount\": {\n\t\t\t\t\t\"value\": 3019,\n\t\t\t\t\t\"unit\": \"шт.\"\n\t\t\t\t}\n\t\t\t}\n\t\t]\n\t}\n}"
+				},
+				{
+					"name": "Кол-во пользователей по периодам (error1)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/viewers",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"viewers"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "dateTo",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "mode",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": {\n        \"name\": \"Error Params\",\n        \"message\": \"Double check your request params and try again.\",\n        \"header\": \"No matching params\"\n    }\n}"
+				},
+				{
+					"name": "Кол-во пользователей по периодам (error2)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/viewers?dateFrom=",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"viewers"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": ""
+								},
+								{
+									"key": "dateTo",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "mode",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": {\n        \"name\": \"Error Params\",\n        \"message\": \"Double check your request params and try again.\",\n        \"header\": \"No matching params\"\n    }\n}"
+				},
+				{
+					"name": "Кол-во пользователей по периодам (error3)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/viewers?dateTo=",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"viewers"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "dateTo",
+									"value": ""
+								},
+								{
+									"key": "mode",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": {\n        \"name\": \"Error Params\",\n        \"message\": \"Double check your request params and try again.\",\n        \"header\": \"No matching params\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Оценки пользователей*",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{metricsServer}}/channel/{{channelId}}/stats/rating?dateFrom={{dateFrom}}&dateTo={{dateTo}}",
+					"host": [
+						"{{metricsServer}}"
+					],
+					"path": [
+						"channel",
+						"{{channelId}}",
+						"stats",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "dateFrom",
+							"value": "{{dateFrom}}",
+							"description": "Обязательный параметр\nДата начала периода (string)"
+						},
+						{
+							"key": "dateTo",
+							"value": "{{dateTo}}",
+							"description": "Обязательный параметр\nДата окончания периода (string)"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Оценки пользователей",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/rating?dateFrom={{dateFrom}}&dateTo={{dateTo}}",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"rating"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}",
+									"description": "Обязательный параметр\nДата начала периода (string)"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}",
+									"description": "Обязательный параметр\nДата окончания периода (string)"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"dateFrom\": \"{{dateFrom}}\",\n    \"dateTo\": \"{{dateTo}}\",\n    \"channelId\": {{channelId}},\n    \"channelTitle\": \"Пейзаж ТВ\",\n    \"rating\": [\n        {\n            \"rate\": 10,\n            \"userCount\": {\n                \"value\": 4,\n                \"unit\": \"шт.\"\n            }\n        },\n        {\n            \"rate\": 9,\n            \"userCount\": {\n                \"value\": 18,\n                \"unit\": \"шт.\"\n            }\n        },\n        {\n            \"rate\": 8,\n            \"userCount\": {\n                \"value\": 29,\n                \"unit\": \"шт.\"\n            }\n        },\n        {\n            \"rate\": 7,\n            \"userCount\": {\n                \"value\": 56,\n                \"unit\": \"шт.\"\n            }\n        },\n        {\n            \"rate\": 6,\n            \"userCount\": {\n                \"value\": 14,\n                \"unit\": \"шт.\"\n            }\n        },\n        {\n            \"rate\": 5,\n            \"userCount\": {\n                \"value\": 19,\n                \"unit\": \"шт.\"\n            }\n        },\n        {\n            \"rate\": 4,\n            \"userCount\": {\n                \"value\": 3,\n                \"unit\": \"шт.\"\n            }\n        },\n        {\n            \"rate\": 3,\n            \"userCount\": {\n                \"value\": 8,\n                \"unit\": \"шт.\"\n            }\n        },\n        {\n            \"rate\": 2,\n            \"userCount\": {\n                \"value\": 0,\n                \"unit\": \"шт.\"\n            }\n        },\n        {\n            \"rate\": 1,\n            \"userCount\": {\n                \"value\": 1,\n                \"unit\": \"шт.\"\n            }\n        }\n    ],\n    \"votesDetails\": {\n        \"votersCount\": {\n            \"value\": 152,\n            \"unit\": \"шт.\"\n        }\n    }\n}"
+				},
+				{
+					"name": "Оценки пользователей (error1)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/rating",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"rating"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}",
+									"description": "Обязательный параметр\nДата начала периода (string)",
+									"disabled": true
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}",
+									"description": "Обязательный параметр\nДата окончания периода (string)",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 11 Feb 2023 20:22:17 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=fb65b82dadfd9289"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=d480e27498c02430"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "120"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "114"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1676146958"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4a5-wcL8BAkbGPNToVsqmT71AsywryU\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": {\n        \"name\": \"Error Params\",\n        \"message\": \"Double check your request params and try again.\",\n        \"header\": \"No matching params\"\n    }\n}"
+				},
+				{
+					"name": "Оценки пользователей (error2)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/rating?dateFrom={{dateFrom}}",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"rating"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}",
+									"description": "Обязательный параметр\nДата начала периода (string)"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}",
+									"description": "Обязательный параметр\nДата окончания периода (string)",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 11 Feb 2023 20:22:17 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=fb65b82dadfd9289"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=d480e27498c02430"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "120"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "114"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1676146958"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4a5-wcL8BAkbGPNToVsqmT71AsywryU\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": {\n        \"name\": \"Error Params\",\n        \"message\": \"Double check your request params and try again.\",\n        \"header\": \"No matching params\"\n    }\n}"
+				},
+				{
+					"name": "Оценки пользователей (error3)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/rating?dateTo={{dateTo}}",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"rating"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}",
+									"description": "Обязательный параметр\nДата начала периода (string)",
+									"disabled": true
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}",
+									"description": "Обязательный параметр\nДата окончания периода (string)"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 11 Feb 2023 20:22:17 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-srv-trace",
+							"value": "v=1;t=fb65b82dadfd9289"
+						},
+						{
+							"key": "x-srv-span",
+							"value": "v=1;s=d480e27498c02430"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "120"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "114"
+						},
+						{
+							"key": "X-RateLimit-Reset",
+							"value": "1676146958"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4a5-wcL8BAkbGPNToVsqmT71AsywryU\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": {\n        \"name\": \"Error Params\",\n        \"message\": \"Double check your request params and try again.\",\n        \"header\": \"No matching params\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Статистика добавления канала в Избранное*",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test for active status only\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"active\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{metricsServer}}/channel/{{channelId}}/stats/favourites?dateFrom={{dateFrom}}&dateTo={{dateTo}}&status=active",
+					"host": [
+						"{{metricsServer}}"
+					],
+					"path": [
+						"channel",
+						"{{channelId}}",
+						"stats",
+						"favourites"
+					],
+					"query": [
+						{
+							"key": "dateFrom",
+							"value": "{{dateFrom}}"
+						},
+						{
+							"key": "dateTo",
+							"value": "{{dateTo}}"
+						},
+						{
+							"key": "status",
+							"value": "active",
+							"description": "Опциональный параметр\n(enam)\nactive -- выводит количество пользователей, у которых на конец периода канал все ещё находится в списке избранных\n"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Кол-во пользователей, добавивших канал в Избранное",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/favourites?dateFrom={{dateFrom}}&dateTo={{dateTo}}",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"favourites"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}"
+								},
+								{
+									"key": "status",
+									"value": null,
+									"description": "Опциональный параметр\n(enam)\nactive -- выводит количество пользователей, у которых на конец периода канал все ещё находится в списке избранных\n",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"dateFrom\": {{dateFrom}},\n    \"dateTo\": {{dateTo}},\n    \"channelId\": {{channelId}},\n    \"channelTitle\": \"Пейзаж ТВ\",\n    \"userFavourites\": [\n        {\n            \"status\": null,\n            \"viewersCount\": {\n                \"value\": \"116\",\n                \"unit\": \"шт.\"\n            }\n        }\n    ]\n}"
+				},
+				{
+					"name": "Кол-во пользователей, добавивших канал в Избранное Copy",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/favourites?dateFrom={{dateFrom}}&dateTo={{dateTo}}&status=active",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"favourites"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"description": "Опциональный параметр\n(enam)\nactive -- выводит количество пользователей, у которых на конец периода канал все ещё находится в списке избранных\n"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"dateFrom\": \"{{dateFrom}}\",\n    \"dateTo\": \"{{dateTo}}\",\n    \"channelId\": {{channelId}},\n    \"channelTitle\": \"Пейзаж ТВ\",\n    \"userFavourites\": [\n        {\n            \"status\": \"active\",\n            \"viewersCount\": {\n                \"value\": 112,\n                \"unit\": \"шт.\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Статистика отказов канала*",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{metricsServer}}/channel/{{channelId}}/stats/left?dateFrom={{dateFrom}}&dateTo={{dateTo}}",
+					"host": [
+						"{{metricsServer}}"
+					],
+					"path": [
+						"channel",
+						"{{channelId}}",
+						"stats",
+						"left"
+					],
+					"query": [
+						{
+							"key": "dateFrom",
+							"value": "{{dateFrom}}",
+							"description": "Обязательный параметр\nДата начала периода (string)"
+						},
+						{
+							"key": "dateTo",
+							"value": "{{dateTo}}",
+							"description": "Обязательный параметр\nДата окончания периода (string)"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Кол-во пользователей видели описание и не смотрели канал",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/left?dateFrom={{dateFrom}}&dateTo={{dateTo}}",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"left"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}",
+									"description": "Обязательный параметр\nДата начала периода (string)"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}",
+									"description": "Обязательный параметр\nДата окончания периода (string)"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"dateFrom\": \"{{dateFrom}}\",\n    \"dateTo\": \"{{dateTo}}\",\n    \"channelId\": {{channelId}},\n    \"channelTitle\": \"Пейзаж ТВ\",\n    \"userLeft\":\n        {\n            \"viewersCount\": {\n                \"value\": 399,\n                \"unit\": \"шт.\"\n            }\n        }\n}"
+				},
+				{
+					"name": "Кол-во пользователей видели описание и не смотрели канал (error1)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/left",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"left"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}",
+									"description": "Обязательный параметр\nДата начала периода (string)",
+									"disabled": true
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}",
+									"description": "Обязательный параметр\nДата окончания периода (string)",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": {\n        \"name\": \"Error Params\",\n        \"message\": \"Double check your request params and try again.\",\n        \"header\": \"No matching params\"\n    }\n}"
+				},
+				{
+					"name": "Кол-во пользователей видели описание и не смотрели канал (error2)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/left?dateFrom={{dateFrom}}",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"left"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}",
+									"description": "Обязательный параметр\nДата начала периода (string)"
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}",
+									"description": "Обязательный параметр\nДата окончания периода (string)",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": {\n        \"name\": \"Error Params\",\n        \"message\": \"Double check your request params and try again.\",\n        \"header\": \"No matching params\"\n    }\n}"
+				},
+				{
+					"name": "Кол-во пользователей видели описание и не смотрели канал Copy 3",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{metricsServer}}/channel/{{channelId}}/stats/left?dateTo={{dateTo}}",
+							"host": [
+								"{{metricsServer}}"
+							],
+							"path": [
+								"channel",
+								"{{channelId}}",
+								"stats",
+								"left"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "{{dateFrom}}",
+									"description": "Обязательный параметр\nДата начала периода (string)",
+									"disabled": true
+								},
+								{
+									"key": "dateTo",
+									"value": "{{dateTo}}",
+									"description": "Обязательный параметр\nДата окончания периода (string)"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": {\n        \"name\": \"Error Params\",\n        \"message\": \"Double check your request params and try again.\",\n        \"header\": \"No matching params\"\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"pm.test(\"response must be valid and have a body\", function () {",
+					"     pm.response.to.be.ok;",
+					"     pm.response.to.be.withBody;",
+					"     pm.response.to.be.json;",
+					"});",
+					"",
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "metricsServer",
+			"value": "https://737d1334-2cd4-4565-9d83-4c6959bf9c81.mock.pstmn.io"
+		},
+		{
+			"key": "channelId",
+			"value": "14100"
+		},
+		{
+			"key": "dateFrom",
+			"value": "2023-01-20T00:00:00",
+			"type": "string"
+		},
+		{
+			"key": "dateTo",
+			"value": "2023-02-20T23:59:59",
+			"type": "string"
+		}
+	]
+}
